@@ -5,6 +5,5 @@ import { Injectable } from '@angular/core';
 })
 export class LoginService {
 
-  // Ici gérer l'authentification
   constructor() { }
 }

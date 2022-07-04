@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { StudentListComponent } from './container/student-list/student-list.component';
+import { HomePageComponent } from './container/home-page/home-page.component';
 
 
 
 @NgModule({
   declarations: [
-  
-    StudentListComponent
+    HomePageComponent
   ],
   imports: [
     CommonModule
   ]
 })
-export class StudentListModule { }
+export class HomePageModule { }
