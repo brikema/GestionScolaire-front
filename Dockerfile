@@ -10,7 +10,7 @@ RUN npm run build
 # Pull the latest base nginx image used to final docker images
 FROM nginx:stable-alpine
 # Copy the build output to replace the default nginx contents.
-COPY --from=build /usr/local/app/dist/angular-init /usr/share/nginx/html
+COPY --from=build /usr/local/app/dist/gestion-scolaire-front /usr/share/nginx/html
 COPY default.conf /etc/nginx/conf.d/default.conf
 ENV WAIT_VERSION 2.7.2
 ADD https://github.com/ufoscout/docker-compose-wait/releases/download/$WAIT_VERSION/wait /wait
