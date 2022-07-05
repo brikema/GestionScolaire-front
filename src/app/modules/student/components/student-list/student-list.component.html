@@ -18,10 +18,8 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-            <!-- <tr *ngFor="let student in studentArray"> -->
-                <!-- <td><a href="/students/1" class="link-normal color--secondary">{{student.firstName}}</a></td> -->
-                <td><a (click)="openStudentInfo();" class="link-normal color--secondary">toto</a></td>
+            <tr *ngFor="let student of studentArray;">
+                <td><a href="/students/1" class="link-normal">{{student.firstName}}</a></td>
                 <td>11/04/1995</td>
                 <td>jean@pierre.com</td>
             </tr>

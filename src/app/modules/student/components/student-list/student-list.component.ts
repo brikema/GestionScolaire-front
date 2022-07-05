@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Student } from '../../models/student';
 import { StudentService } from '../../services/student.service';
 import { Router } from '@angular/router';
+import {Observable, Subject, takeUntil} from "rxjs";
 
 @Component({
   selector: 'app-student-list',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 export class StudentListComponent implements OnInit {
 
   public studentArray: Student[] = [];
-
+  private readonly _isDestroy: Subject<void> = new Subject();
   constructor(
     private readonly _studentService: StudentService,
     private router: Router
@@ -19,8 +20,13 @@ export class StudentListComponent implements OnInit {
 
   ngOnInit(): void {
     this._studentService.getAll().subscribe(
-      (studentList: Student[]) => this.studentArray = studentList
+      (studentList:any) => this.studentArray = studentList._embedded.students
     )
+    takeUntil(this._isDestroy);
+  }
+  ngOnDestroy(): void {
+    this._isDestroy.next();
+    this._isDestroy.complete();
   }
 
   openStudentInfo() {
