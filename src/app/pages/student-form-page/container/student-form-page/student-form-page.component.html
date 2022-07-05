@@ -1,16 +1,41 @@
 <div class="row">
-    <h1 class="helper-padding-top--xl col-24">Associer un cours à machin</h1>
+    <h1 class="helper-padding-top--xl col-24">Créer un élève</h1>
+    <!-- <h1 class="helper-padding-top--xl col-24">Modifier Jean Pierre</h1> -->
     <p class="helper-padding-top--s helper-padding-bot col-24">Vous devez vous connecter au site afin d'accéder à ses magnifiques fonctionalités.</p>
+    <!-- <p class="helper-padding-top--s helper-padding-bot col-24"><a class="link-normal color--secondary" (click)="openStudentInfo();"><i class="fa-solid fa-arrow-left"></i> Retourner à Jean Pierre</a></p> -->
     
-    <div class="form-java_container col-24">
-        <label class="form-java__label">Email</label>
+    <div class="form-java_container col-8 col-md-12">
+        <label class="form-java__label">Prénom</label>
+        <input type="text" class="form-java__input form-java__input">
+    </div>
+
+    <div class="form-java_container col-8 col-md-12">
+        <label class="form-java__label">Nom</label>
+        <input type="text" class="form-java__input form-java__input">
+    </div>
+
+    <div class="form-java_container col-8 col-md-12">
+        <label class="form-java__label">Date de naissance</label>
+        <input type="date" class="form-java__input form-java__input--s">
+    </div>
+
+    <div class="form-java_container col-8 col-md-12">
+        <label class="form-java__label">Numéro de téléphone</label>
         <input type="text" class="form-java__input form-java__input--s">
     </div>
 
-    <div class="form-java_container col-24">
-        <label class="form-java__label">Mot de passe</label>
-        <input type="password" class="form-java__input form-java__input--s">
+    <div class="form-java_container col-8 col-md-12">
+        <label class="form-java__label">Email</label>
+        <input type="text" class="form-java__input form-java__input">
     </div>
 
-    <button class="button-square button-square--reverse helper-margin-top">Accéder au site</button>
+    <div class="form-java_container col-8 col-md-12">
+        <label class="form-java__label">Adresse</label>
+        <input type="text" class="form-java__input form-java__input--l">
+    </div>
+
+    <div class="col-24">
+        <button class="button-square color--secondary button-square--reverse helper-margin-top">Créer l'étudiant</button>
+        <!-- <button class="button-square color--secondary button-square--reverse helper-margin-top">Modifier Jean</button> -->
+    </div>
 </div>

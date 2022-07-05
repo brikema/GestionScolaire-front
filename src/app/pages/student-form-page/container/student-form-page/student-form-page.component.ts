@@ -1,4 +1,5 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'div[app-student-form-page]',
@@ -9,9 +10,14 @@ export class StudentFormPageComponent implements OnInit {
 
   @HostBinding('class') class = 'frame frame--top frame--padd';
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
+
+  openStudentInfo() {
+    this.router.navigateByUrl('/students/1');
+  };
+
 
 }
