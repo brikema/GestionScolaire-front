@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
+import { concatMap, of, delay, repeat } from 'rxjs';
 
 @Component({
-  selector: 'app-home-page',
+  selector: 'div[app-home-page]',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
 
+  @HostBinding('class') class = 'frame frame--top frame--height frame--middle';
+
   constructor() { }
 
   ngOnInit(): void {
   }
-
 }

@@ -1,11 +1,11 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'div[app-student-list-page]',
-  templateUrl: './student-list-page.component.html',
-  styleUrls: ['./student-list-page.component.css']
+  selector: 'div[app-login-page]',
+  templateUrl: './login-page.component.html',
+  styleUrls: ['./login-page.component.css']
 })
-export class StudentListPageComponent implements OnInit {
+export class LoginPageComponent implements OnInit {
 
   @HostBinding('class') class = 'frame frame--top frame--height frame--padd';
 

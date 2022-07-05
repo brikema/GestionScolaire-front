@@ -3,11 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CourseModule } from './modules/course/course.module';
-import { StudentModule } from './modules/student/student.module';
-import { StudentListPageComponent } from './pages/student-list-page/container/student-list-page/student-list-page.component';
 import { StudentListPageModule } from './pages/student-list-page/student-list-page.module';
 import { SharedModule } from './shared/shared.module';
+import { CourseListPageModule } from './pages/course-list-page/course-list-page.module';
+import { StudentInfoPageModule } from './pages/student-info-page/student-info-page.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +16,9 @@ import { SharedModule } from './shared/shared.module';
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    StudentListPageModule
+    StudentListPageModule,
+    CourseListPageModule,
+    StudentInfoPageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
