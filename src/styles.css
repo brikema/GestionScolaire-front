@@ -1,34 +1,3 @@
-/*
-Debug
-Configuration
-Layout
-    General
-    Frames
-    Grid
-    Helpers
-Content
-    Text
-    Link normal
-    Colors
-    Animations
-Components
-    Navbars
-        Navbar music
-        Navbar food
-    Cards
-        Card square
-        Card hide
-        Card icon
-        Card opinion
-Forms
-    Toggle simple
-    Buttons
-        Button square
-        Button round
-Toolbox
-    Selection
-    Scrollbar ok
-*/
 
 /* #region - Debug */
 ._debugDiv{
@@ -571,6 +540,15 @@ header, main, footer{
     padding: 1rem;
 }
 
+.helper-padding-l{
+    padding: 2rem;
+}
+
+.helper-margin-top-s{
+    margin-top: 1.5rem!important;
+    display: inline-block;
+}
+
 .helper-scroll{
     overflow: auto!important;
 }
@@ -592,6 +570,10 @@ header, main, footer{
 
 .helper-padding-bot{
     padding-bottom: 3rem;
+}
+
+.helper-margin-bot{
+    margin-bottom: 3rem!important
 }
 
 .helper-margin-top{
@@ -701,12 +683,16 @@ code{
     font-size: 2rem;
     letter-spacing: .05rem;
     color:var(--color-opposite-shade1);
-    text-transform: uppercell;
+    text-transform: uppercase;
 }
 
 /* #endregion - Text */ 
 
 /* #region - Link normal */
+
+a:hover{
+    cursor: pointer;
+}
 
 .link-normal{
     color:var(--color-primary);
@@ -722,7 +708,7 @@ code{
     text-decoration:underline;
 }
 
-.link-normal:visited{
+.link-normal[target="_blank"]:visited{
     color:var(--color-link-violet);
 }
 
@@ -1442,3 +1428,7 @@ textarea.form-java__input{
     height: 75vh;
     margin: auto auto;
 }
+
+/* card */
+
+/* card */

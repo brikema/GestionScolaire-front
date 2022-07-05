@@ -9,11 +9,11 @@ import { SharedModule } from './shared/shared.module';
 import { CourseListPageModule } from './pages/course-list-page/course-list-page.module';
 import { StudentInfoPageModule } from './pages/student-info-page/student-info-page.module';
 import { LoginPageComponent } from './pages/login-page/container/login-page/login-page.component';
+import { LoginPageModule } from './pages/login-page/login-page.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginPageComponent
   ],
   imports: [
     BrowserModule,
@@ -24,6 +24,7 @@ import { LoginPageComponent } from './pages/login-page/container/login-page/logi
     CourseListPageModule,
     StudentInfoPageModule,
     ReactiveFormsModule,
+    LoginPageModule,
     HttpClientModule
   ],
   providers: [],

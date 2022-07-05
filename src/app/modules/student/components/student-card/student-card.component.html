@@ -1,8 +1,8 @@
-<div class="row">
+<div class="row helper-padding-l color-bg--theme">
     <div class="col-8 col-md-24 helper-padding-top--xl image-container">
         <img class="" alt="une photo de jean pierre" src="https://cdn.pixabay.com/photo/2015/04/30/06/47/boy-746520_960_720.jpg">
     </div>
-    <div class="col-16 col-md-24 helper-padding-top--xl">
+    <div class="col-8 col-md-24 helper-padding-top--xl">
         <h1>Jean Pierre</h1>
         <p class="helper-padding-top-s">8 ans</p>
         <p class="helper-padding-top-s">11/04/1195</p>
@@ -10,22 +10,25 @@
         <p class="helper-padding-top-s">06.55.88.62.78</p>
         <p class="helper-padding-top-s">3 rue des fleurs 78555 Lala</p>
     </div>
-    <div class="col-8 col-md-24 helper-padding-top">
-        <div class="helper-line helper-center">
-            <button class="button-square button-square--reverse button--big">Modifier l'élève</button>
-            <button class="button-square button--big">Supprimer l'élève</button>
-        </div>
-    </div>
-    <div class="col-16 col-md-24 helper-padding-top">
-        <h2>Liste des cours</h2>
+    <div class="col-8 col-md-24 helper-padding-top--xl">
+        <h2 class="text-lighter">Cours</h2>
         <div class="list-click col-24 helper-padding-top-s">
-            <a href="courses" class="list-click__item">
+            <a (click)="openCourseCard();" class="list-click__item">
                 <span class="list-click__item__text">Mathématique</span>
             </a>     
-            <a href="courses" class="list-click__item">
+            <a (click)="openCourseCard();" class="list-click__item">
                 <span class="list-click__item__text">Java</span>
             </a>               
         </div>
-        <a href="" class="link-normal">Associer un nouveau cours</a>
+        <a (click)="openLinkForm();" class="link-normal helper-margin-top-s">Associer un nouveau cours</a>
     </div>
+    <div class="col-8 col-md-24 helper-padding-top--s">
+        <div class="helper-line helper-center">
+            <button class="button-square button-square--reverse" (click)="openModifyForm();">Modifier l'élève</button>
+            <button class="button-square">Supprimer l'élève</button>
+        </div>
+    </div>
+
+</div>
+<div class="row">
 </div>

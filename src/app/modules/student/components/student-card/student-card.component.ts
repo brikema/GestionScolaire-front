@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-student-card',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentCardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
+
+  openLinkForm() {
+    this.router.navigateByUrl('/students/1/link-course');
+  };
+
+  openModifyForm() {
+    this.router.navigateByUrl('/students/1/modify');
+  };
+
+  openCourseCard() {
+    this.router.navigateByUrl('/courses/1');
+  };
 
 }

@@ -1,0 +1,77 @@
+{
+    "_embedded": {
+        "students": [
+            {
+                "firstName": "Amanda",
+                "lastName": "Wilderman",
+                "birthDate": "1960-11-05T18:46:26.000+00:00",
+                "mail": "Amanda.Wilderman@ensup.eu",
+                "phoneNumber": "731.546.9301 x3861",
+                "address": "5044 Earl Lake, DuBuquemouth, CA 76818-5692",
+                "_links": {
+                    "self": {
+                        "href": "http://Matebook:8082/students/1"
+                    },
+                    "student": {
+                        "href": "http://Matebook:8082/students/1"
+                    },
+                    "courses": {
+                        "href": "http://Matebook:8082/students/1/courses"
+                    }
+                }
+            },
+            {
+                "firstName": "Noel",
+                "lastName": "Abshire",
+                "birthDate": "1958-01-28T03:23:35.000+00:00",
+                "mail": "Noel.Abshire@ensup.eu",
+                "phoneNumber": "1-295-844-2118 x5234",
+                "address": "671 Senger Walks, New Gerardo, ID 21382-4954",
+                "_links": {
+                    "self": {
+                        "href": "http://Matebook:8082/students/13"
+                    },
+                    "student": {
+                        "href": "http://Matebook:8082/students/13"
+                    },
+                    "courses": {
+                        "href": "http://Matebook:8082/students/13/courses"
+                    }
+                }
+            },
+            {
+                "firstName": "Fern",
+                "lastName": "Dicki",
+                "birthDate": "1989-07-16T17:12:19.000+00:00",
+                "mail": "Fern.Dicki@ensup.eu",
+                "phoneNumber": "(937) 050-9327 x01881",
+                "address": "2809 Von Extension, Wilmahaven, WY 43076",
+                "_links": {
+                    "self": {
+                        "href": "http://Matebook:8082/students/15"
+                    },
+                    "student": {
+                        "href": "http://Matebook:8082/students/15"
+                    },
+                    "courses": {
+                        "href": "http://Matebook:8082/students/15/courses"
+                    }
+                }
+            }
+        ]
+    },
+    "_links": {
+        "self": {
+            "href": "http://Matebook:8082/students"
+        },
+        "profile": {
+            "href": "http://Matebook:8082/profile/students"
+        }
+    },
+    "page": {
+        "size": 20,
+        "totalElements": 15,
+        "totalPages": 1,
+        "number": 0
+    }
+}
