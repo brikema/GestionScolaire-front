@@ -25,6 +25,7 @@ export class AuthService {
 
   setToken(token:string){
     this.TOKEN = token;
+    localStorage.setItem("token",this.TOKEN);
     this.decodeToken();
   }
 

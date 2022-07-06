@@ -13,9 +13,11 @@ export class TokenInterceptorService implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): any {
     let tokenReq;
-    let token = this.authService.getToken();
+    let token = localStorage.getItem("token");
+
+
     // console.log('intercepting' + this.serverConfig.TOKEN)
-    if (token != "")
+    if (token != null)
     {
       tokenReq =req.clone({
         setHeaders:{
