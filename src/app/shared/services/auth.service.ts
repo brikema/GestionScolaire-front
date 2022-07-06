@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import jwt_decode from 'jwt-decode';
 import { ServerConfig } from 'src/config/server.config';
 import { User } from '../models/user';
@@ -8,48 +9,46 @@ import { User } from '../models/user';
   providedIn: 'root'
 })
 export class AuthService {
-  private TOKEN:string = "";
-  private USER!:User;
 
-
-  constructor(private http: HttpClient, private server: ServerConfig) {
+  constructor(private http: HttpClient, private server: ServerConfig, private router: Router) {
 
   }
 
-  login(username:string | null | undefined, password:string | null | undefined) {
-      return this.http.post<any>(`${this.server.API_URL}/user-service/auth/signin`, {username, password});
-  }
-  getToken() {
-    return this.TOKEN;
+  login(username: string | null | undefined, password: string | null | undefined) {
+    return this.http.post<any>(`${this.server.API_URL}/user-service/auth/signin`, { username, password });
   }
 
-  setToken(token:string){
-    this.TOKEN = token;
-    localStorage.setItem("token",this.TOKEN);
-    this.decodeToken();
+  setToken(token: string) {
+    localStorage.setItem("token", token);
+    this.decodeToken(token);
   }
 
-  getUser(){
-    return this.USER;
-  }
 
-  decodeToken(){
+  decodeToken(token: string) {
     try {
-      let dt:any = jwt_decode(this.TOKEN);
-      this.USER = new User(dt.id,dt.sub,dt.roles);
-      localStorage.setItem("user",JSON.stringify(this.USER));
+      let dt: any = jwt_decode(token);
+      let user: User = new User(dt.id, dt.sub, dt.roles);
+      localStorage.setItem("user", JSON.stringify(user));
     } catch (error) {
       console.log(error);
     }
   }
 
-  isAuthenticated(){
-    if(localStorage.getItem("user")){
+  isAuthenticated() {
+    if (localStorage.getItem("user")) {
       return true;
     } else {
       return false;
     }
-  
+
   }
-  
+
+  disconnect() {
+    localStorage.clear();
+    this.router.navigate(['/'])
+    .then(() => {
+      window.location.reload();
+    });
+  }
+
 }
