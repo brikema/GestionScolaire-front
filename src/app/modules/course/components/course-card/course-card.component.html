@@ -1,8 +1,9 @@
 <div class="row helper-padding-l color-bg--theme">
     <div class="col-8 col-md-24">
-        <h1>Mathématique</h1>
-        <h2 class="helper-padding-top-s text-lighter">Cours #1</h2>
-        <p class="helper-padding-top-s">6 étudiants</p>
-        <p class="helper-padding-top-s">15 heures de cours</p>
+        <h1>{{course.theme}}</h1>
+        <h2 class="helper-padding-top-s text-lighter">Cours #{{course.id}}</h2>
+        <p class="helper-padding-top-s" *ngIf="numberOfStudents > 1">{{numberOfStudents}} étudiants</p>
+        <p class="helper-padding-top-s" *ngIf="numberOfStudents <= 1">{{numberOfStudents}} étudiant</p>
+        <p class="helper-padding-top-s">{{course.hours}} heures de cours</p>
     </div>
 </div>

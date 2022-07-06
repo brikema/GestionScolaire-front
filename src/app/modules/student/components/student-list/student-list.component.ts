@@ -12,7 +12,9 @@ import {Observable, Subject, takeUntil} from "rxjs";
 export class StudentListComponent implements OnInit {
 
   public studentArray: Student[] = [];
+
   private readonly _isDestroy: Subject<void> = new Subject();
+
   constructor(
     private readonly _studentService: StudentService,
     private router: Router
@@ -20,10 +22,11 @@ export class StudentListComponent implements OnInit {
 
   ngOnInit(): void {
     this._studentService.getAll().subscribe(
-      (studentList:any) => this.studentArray = studentList._embedded.students
+      (studentList: any) => this.studentArray = studentList._embedded.students
     )
     takeUntil(this._isDestroy);
   }
+
   ngOnDestroy(): void {
     this._isDestroy.next();
     this._isDestroy.complete();

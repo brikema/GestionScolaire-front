@@ -1494,3 +1494,16 @@ textarea.form-java__input{
 .footer-vite div h3{
     margin-bottom: 2rem;
 }
+
+.error{
+    --error-red: #ff0033;
+    --error-red-lighter: #FFCCCC;
+    border: 0.5rem solid var(--error-red);
+    background-color: var(--error-red-lighter); 
+    box-sizing: border-box;
+    padding: 0.5rem;
+}
+
+/* <div class="error">
+<span>toto</span>
+</div> */
