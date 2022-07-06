@@ -1,12 +1,12 @@
 <div class="row">
     <h1 class="helper-padding-top--xl col-24">{{id ? "Modifier "+student.firstName+" "+student.lastName : "Créer un
         étudiant"}}</h1>
-    <!-- <h1 class="helper-padding-top--xl col-24">Modifier Jean Pierre</h1> -->
+    <!-- <h1 class="helper-padding-top--xl col-24">Modifier {{student.firstName + " " + student.lastName}}</h1> -->
     <p class="helper-padding-top--s helper-padding-bot col-24">Vous devez vous connecter au site afin d'accéder à ses
         magnifiques fonctionalités.</p>
 
     <p *ngIf="id" class="helper-padding-top--s helper-padding-bot col-24"><a class="link-normal color--secondary"
-            (click)="openStudentInfo();"><i class="fa-solid fa-arrow-left"></i> Retourner à Jean Pierre</a></p>
+            (click)="openStudentInfo();"><i class="fa-solid fa-arrow-left"></i> Retourner à {{student.firstName + " " + student.lastName}}</a></p>
 
     <div [className]="submitted && error ? 'error col-24' : 'error--invisible col-24'" *ngIf="submitted && error"
         class="col-24">
