@@ -12,8 +12,8 @@
         class="col-24">
         <span>{{error}}</span>
     </div>
-
-    <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+</div>
+    <form [formGroup]="studentForm" class="row" (ngSubmit)="onSubmit()">
         <div class="form-java_container col-8 col-md-12">
             <label class="form-java__label">Prénom</label>
             <input formControlName="firstName" type="text" class="form-java__input form-java__input">
@@ -50,4 +50,3 @@
                 "+student.firstName+" "+student.lastName : "Créer l'étudiant"}}</button>
         </div>
     </form>
-</div>
