@@ -7,5 +7,6 @@ export class Student {
     birthDate: Date | undefined;
     mail: string | undefined;
     phoneNumber: string | undefined;
-    courses: Course[] = [];
+    address!: string | undefined;
+    // courses: Course[] = [];
 }

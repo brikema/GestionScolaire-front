@@ -1,6 +1,7 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { LoginService } from 'src/app/shared/services/login.service';
+import {ServerConfig} from "../../../../../config/server.config";
 
 @Component({
   selector: 'div[app-login-page]',
@@ -12,9 +13,10 @@ export class LoginPageComponent implements OnInit {
   @HostBinding('class') class = 'frame frame--top frame--height frame--padd';
 
   loginForm!: FormGroup;
+  public TOKEN: string= "";
 
-  constructor(private fb:FormBuilder, private loginService: LoginService) {
-    
+  constructor(private fb:FormBuilder, private loginService: LoginService, private serverConfig: ServerConfig) {
+
   }
 
   ngOnInit(): void {
@@ -28,10 +30,10 @@ export class LoginPageComponent implements OnInit {
     console.log(this.loginForm.value);
 
     if(this.loginForm.valid){
-      this.loginService.login(this.loginForm.value.username, this.loginForm.value.password).subscribe({
+      this.loginService.login(this.loginForm.value.username, this.loginForm.value.password)
+        .subscribe({
         next: (value) => {
-          console.log(value)
-          //this.updateLatestArtist.emit() ;
+          this.serverConfig.TOKEN = value.token
         },
         error : (error) => {console.log(error);}
       });

@@ -2,48 +2,42 @@ import { Injectable } from '@angular/core';
 import { map, Observable, of } from 'rxjs';
 import { ServerConfig } from 'src/config/server.config';
 import { Student } from '../models/student';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpEvent, HttpHeaders} from '@angular/common/http';
 import { response } from 'express';
+import {TokenInterceptorService} from "../../../token-interceptor.service";
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class StudentService {
 
-  API_URL: string = `${this.serverConfig.API_URL}/students`
-  
+  // API_URL: string = `/school/students`
+  API_URL: string = `${this.serverConfig.API_URL}/school-service/students`
+  private studentArray: Student[] = [];
 
-  constructor(private serverConfig: ServerConfig, private http:HttpClient) { }
+  constructor(private serverConfig: ServerConfig, private http:HttpClient,private tokenInterceptorService:TokenInterceptorService) { }
 
-  getAll() : Observable<Student[]> {
-    return this.http.get<Student[]>(this.API_URL);
-  }
+   getAll() : any {
+     return this.http.get<any>(this.API_URL);
+   }
 
-  // getAllMock() : Observable<Student[]> {
-  //   response: of(Student[]) = Observable<[]
-  //   this.http.get<Student[]>('./mock-student.json').pipe(
-  //     map((result: any) => {
-  //       result.students
-  //     })
-  //   );
-  //   return of(response);
-  // }
-
-  create(student: Student) : Observable<Student> {
-    return this.http.post<Student>(this.API_URL,student);
+  create(student: Student) : Observable<HttpEvent<Student>> {
+    return this.http.post<Student>(this.API_URL,student,this.serverConfig.httpOptions);
   }
 
   update(student: Student) : Observable<Student> {
-    return this.http.put<Student>(`${this.API_URL}/${student.id}`,student);
+    return this.http.put<Student>(`${this.API_URL}/${student.id}`,this.serverConfig.httpOptions);
   }
 
   delete(id: number) : Observable<any> {
     return this.http.delete(`${this.API_URL}/${id}`);
-  } 
+  }
 
   get(id: number) : Observable<any> {
     return this.http.get(`${this.API_URL}/${id}`);
-  } 
+  }
 
 
 }
