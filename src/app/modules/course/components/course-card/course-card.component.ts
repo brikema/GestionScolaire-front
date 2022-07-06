@@ -21,11 +21,12 @@ export class CourseCardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this._courseService.get(this.courseId).subscribe(
-      err => console.log('HTTP Error', err),
-      (result: any) => {
-        this.course = result
-      }
+    this._courseService.get(this.courseId).subscribe({
+      next: (course) => {
+        this.course = course;
+      },
+    }
+    
     )
     takeUntil(this._isDestroy);
 
