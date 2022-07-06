@@ -27,6 +27,7 @@ export class CourseListComponent implements OnInit {
       {
         next: (courseList:any) => {
            this.courseArray = courseList._embedded.courses;
+           this.courseArray.sort((a,b) => a.theme.localeCompare(b.theme));
            this.courseArrayDisplay = this.courseArray;
         }
       }

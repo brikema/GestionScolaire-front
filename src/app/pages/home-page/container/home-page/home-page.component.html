@@ -1,5 +1,10 @@
 <div class="row">
-    <span *ngIf="authenticated" class="col-24 helper-padding">Bienvenue, {{user.name}}</span>
+    <div *ngIf="authenticated && user.roles == 'ROLE_DIRECTOR'" class="col-24 helper-padding"> 
+        <div class="badge-simple badge--floating">
+            <span class="color-text color--theme">Bienvenue, {{user.name}}</span>
+        </div>
+    </div>
+
     <div class="col-12 col-md-24 image-container">
         <img alt="image d'un batiment" src="/assets/images/hero.png">
     </div>
@@ -11,7 +16,7 @@
             <p *ngIf="authenticated && user.roles == 'ROLE_DIRECTOR' && studentCount > 1" class="helper-padding-top"><strong>{{studentCount}} étudiants</strong> sont inscrits dans cet établissement : <a  tabindex="0" (click)="openStudentList();" class="link-normal color--secondary">voir la liste des étudiants</a>.</p>
             <p *ngIf="authenticated && user.roles == 'ROLE_DIRECTOR' && studentCount == 1" class="helper-padding-top"><strong>{{studentCount}} étudiants</strong> sont inscrits dans cet établissement : <a  tabindex="0" (click)="openStudentList();" class="link-normal color--secondary">voir la liste des étudiants</a>.</p>
 
-            <p *ngIf="authenticated && courseCount > 1" class=""><strong>{{courseCount}} cours</strong> sont enseignés dans cet établissement : <a tabindex="0" (keydown.enter)="openCourseList();" class="link-normal color--secondary">voir les cours</a>.</p>
+            <p *ngIf="authenticated && courseCount > 1" class=""><strong>{{courseCount}} cours</strong> sont enseignés dans cet établissement : <a tabindex="0" (click)="openCourseList();" class="link-normal color--secondary">voir les cours</a>.</p>
             <p *ngIf="authenticated && courseCount == 1" class=""><strong>{{courseCount}} cours</strong> est enseigné dans cet établissement : <a tabindex="0" (click)="openCourseList();" class="link-normal color--secondary">voir le cours</a>.</p>
 
             <p *ngIf="authenticated && user.roles == 'ROLE_DIRECTOR' && emptyStudentCount == 1" class="helper-padding-top"><strong>{{emptyStudentCount}} élève</strong> n'est inscrit à aucun cours.</p>

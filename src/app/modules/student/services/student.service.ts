@@ -20,7 +20,7 @@ export class StudentService {
   constructor(private serverConfig: ServerConfig, private http:HttpClient,private tokenInterceptorService:TokenInterceptorService) { }
 
    getAll() : any {
-     return this.http.get<any>(this.API_URL);
+     return this.http.get<any>(`${this.API_URL}?size=10000`);
    }
 
   create(student: Student) : Observable<HttpEvent<Student>> {

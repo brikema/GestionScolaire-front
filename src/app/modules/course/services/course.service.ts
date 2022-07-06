@@ -14,7 +14,7 @@ export class CourseService {
   constructor(private serverConfig: ServerConfig, private http:HttpClient) { }
 
   getAll() : any {
-    return this.http.get<Course[]>(this.API_URL);
+    return this.http.get<Course[]>(`${this.API_URL}?size=10000`);
   }
 
   get(id: number) : Observable<any> {
