@@ -18,9 +18,9 @@
         </thead>
         <tbody>
             <tr *ngFor="let student of studentArray;">
-                <td><a tabindex="0" href="/students/1" class="link-normal">{{student.firstName}}</a></td>
-                <td>11/04/1995</td>
-                <td>jean@pierre.com</td>
+                <td><a tabindex="0" href="/students/1" class="link-normal color--secondary">{{student.firstName}} {{student.lastName}}</a></td>
+                <td>{{student.birthDate | date:'dd/MM/yyyy' }}</td>
+                <td>{{student.mail}}</td>
             </tr>
         </tbody>
     </table>

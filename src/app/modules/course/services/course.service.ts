@@ -9,13 +9,20 @@ import { Course } from '../models/course';
 })
 export class CourseService {
 
-  API_URL: string = `${this.serverConfig.API_URL}/courses`;
+  API_URL: string = `${this.serverConfig.API_URL}/school-service/courses`;
 
   constructor(private serverConfig: ServerConfig, private http:HttpClient) { }
 
-  getAll() : Observable<Course[]> {
+  getAll() : any {
     return this.http.get<Course[]>(this.API_URL);
   }
 
+  get(id: number) : Observable<any> {
+    return this.http.get(`${this.API_URL}/${id}`);
+  }
+
+  getStudentsByCourse(id: number) : Observable<any> {
+    return this.http.get(`${this.API_URL}/${id}/students`);
+  }
 
 }

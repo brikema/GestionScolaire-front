@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subject, takeUntil } from 'rxjs';
+import { Course } from '../../models/course';
+import { CourseService } from '../../services/course.service';
 
 @Component({
   selector: 'app-course-list',
@@ -8,13 +11,29 @@ import { Router } from '@angular/router';
 })
 export class CourseListComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  public courseArray: Course[] = [];
+
+  private readonly _isDestroy: Subject<void> = new Subject();
+
+  constructor(
+    private router: Router,
+    private readonly _courseService: CourseService
+    ) { }
 
   ngOnInit(): void {
+    this._courseService.getAll().subscribe(
+      (courseList: any) => this.courseArray = courseList._embedded.courses
+    )
+    takeUntil(this._isDestroy);
   }
 
-  openCourseCard() {
-    this.router.navigateByUrl('/courses/1');
+  ngOnDestroy(): void {
+    this._isDestroy.next();
+    this._isDestroy.complete();
+  }
+
+  openCourseCard(id: number | undefined) {
+    this.router.navigateByUrl(`/courses/${id}`);
   };
 
 }
