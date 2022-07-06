@@ -25,6 +25,7 @@ export class StudentListComponent implements OnInit {
     this._studentService.getAll().subscribe({
       next: (studentList: any) => {
         this.studentArray = studentList._embedded.students;
+        this.studentArray.sort((a,b) => a.firstName.localeCompare(b.firstName));
         this.studentArrayDisplay = this.studentArray;
       }
     })
