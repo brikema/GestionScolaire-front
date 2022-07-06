@@ -24,4 +24,8 @@ export class HomePageComponent implements OnInit {
     this.router.navigateByUrl('/courses');
   };
 
+  openStudentNew(){
+    this.router.navigateByUrl('/students/new');
+  }
+
 }

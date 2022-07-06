@@ -7,7 +7,7 @@ import { Component, HostBinding, OnInit } from '@angular/core';
 })
 export class StudentInfoPageComponent implements OnInit {
 
-  @HostBinding('class') class = 'frame frame--top frame--padd';
+  @HostBinding('class') class = 'frame frame--height frame--top frame--padd';
 
   constructor() { }
 

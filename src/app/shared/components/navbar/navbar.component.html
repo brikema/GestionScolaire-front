@@ -1,13 +1,23 @@
-<nav class="navbar-music">
+<nav class="navbar-music nav--fullscreen">
     <div>
         <a class="navbar-music__logo navbar-music__logo--basic" routerLink="/" routerLinkActive="active">  
             <span class="navbar-music__logo--basic"><i class="fa-solid fa-school"></i>&nbsp;&nbsp;&nbsp;Gestion Scolaire</span>
         </a>
     </div>
     <div>   
-        <a class="navbar-music__link" routerLink="students/new" routerLinkActive="active">Créer un étudiant</a>
-        <a class="navbar-music__link" routerLink="students" routerLinkActive="active">Liste des étudiants</a>
-        <a class="navbar-music__link" routerLink="courses" routerLinkActive="active">Liste des cours</a>
-        <a class="navbar-music__link" routerLink="login" routerLinkActive="active">Mon compte</a>
+        <a class="navbar-music__link" routerLink="students" routerLinkActive="active"><i class="fa-solid fa-users"></i>&NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;Liste des étudiants</a>
+        <a class="navbar-music__link" routerLink="courses" routerLinkActive="active"><i class="fa-solid fa-chalkboard-user"></i>&NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;Liste des cours</a>
+        <a class="navbar-music__link" routerLink="login" routerLinkActive="active"><i class="fas fa-user"></i>&NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;Mon compte</a>
+    </div>
+</nav>
+
+<nav class="navbar-music nav--smallscreen">
+    <div>  
+        <a class="navbar-music__logo navbar-music__logo--basic" routerLink="/" routerLinkActive="active">  
+            <span class="navbar-music__logo--basic"><i class="fa-solid fa-school"></i></span>
+        </a> 
+        <a class="navbar-music__link" routerLink="students" routerLinkActive="active"><i class="fa-solid fa-users"></i></a>
+        <a class="navbar-music__link" routerLink="courses" routerLinkActive="active"><i class="fa-solid fa-chalkboard-user"></i></a>
+        <a class="navbar-music__link" routerLink="login" routerLinkActive="active"><i class="fas fa-user"></i></a>
     </div>
 </nav>

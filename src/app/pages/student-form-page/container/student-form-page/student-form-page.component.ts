@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class StudentFormPageComponent implements OnInit {
 
-  @HostBinding('class') class = 'frame frame--top frame--padd';
+  @HostBinding('class') class = 'frame frame--height frame--top frame--padd';
 
   constructor(private router: Router) { }
 
