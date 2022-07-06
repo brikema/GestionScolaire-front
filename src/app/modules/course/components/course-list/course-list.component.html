@@ -18,8 +18,6 @@
         </thead>
         <tbody>
             <tr *ngFor="let course of courseArray;">
-                <td><a tabindex="0" class="link-normal color--secondary color--secondary color--secondary color--secondary" (click)="openCourseCard(555);">{{course.theme}}</a></td>
-
                 <td><a tabindex="0" class="link-normal color--secondary color--secondary color--secondary color--secondary" (click)="openCourseCard(course.id);">{{course.theme}}</a></td>
                 <td>{{course.hours}} heures</td>
             </tr>

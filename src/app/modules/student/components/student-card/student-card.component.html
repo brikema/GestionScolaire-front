@@ -12,12 +12,9 @@
     <div class="col-8 col-md-24 helper-padding-top--xl helper-padding">
         <h2 class="text-lighter">Cours</h2>
         <div class="list-click col-24 helper-padding-top-s">
-            <a tabindex="0" (click)="openCourseCard(1);" class="list-click__item">
-                <span class="list-click__item__text">Mathématique</span>
-            </a>     
-            <a tabindex="0" (click)="openCourseCard(1);" class="list-click__item">
-                <span class="list-click__item__text">Java</span>
-            </a>               
+            <a *ngFor="let course of courseArray" tabindex="0" (click)="openCourseCard(course.id);" class="list-click__item">
+                <span class="list-click__item__text">{{course.theme}}</span>
+            </a>                  
         </div>
         <a tabindex="0" (click)="openLinkForm();" class="link-normal color--secondary helper-margin-top-s">Associer un nouveau cours</a>
     </div>

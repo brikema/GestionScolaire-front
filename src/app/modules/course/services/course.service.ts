@@ -25,4 +25,8 @@ export class CourseService {
     return this.http.get(`${this.API_URL}/${id}/students`);
   }
 
+  associateCourseAndStudent(studentId:number,courseId:number): Observable<any>{
+    return this.http.get(`${this.API_URL}/associate/${studentId}/${courseId}`);
+  }
+
 }
