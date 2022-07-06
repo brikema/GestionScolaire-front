@@ -9,7 +9,7 @@
             <a *ngIf="user.roles == 'ROLE_DIRECTOR'" class="navbar-music__link" routerLink="students" routerLinkActive="active"><i class="fa-solid fa-users"></i>&NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;Liste des étudiants</a>
             <a class="navbar-music__link" routerLink="courses" routerLinkActive="active"><i class="fa-solid fa-chalkboard-user"></i>&NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;Liste des cours</a> 
         </ng-container>  
-       <a class="navbar-music__link" routerLink="login" routerLinkActive="active"><i class="fas fa-user"></i>&NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;{{authenticated ? user.name : "Se connecter"}}</a>
+       <a class="navbar-music__link" routerLink="login" routerLinkActive="active" ><i class="fas fa-user"></i>&NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;{{authenticated ? "Se déconnecter" : "Se connecter"}}</a>
     </div>
 </nav>
 
