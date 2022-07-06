@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {  Router } from '@angular/router';
+import { Course } from 'src/app/modules/course/models/course';
 import { Student } from '../../models/student';
 import { StudentService } from '../../services/student.service';
 
@@ -11,15 +12,17 @@ import { StudentService } from '../../services/student.service';
 export class StudentCardComponent implements OnInit {
   @Input() studentId: number = 0;
   student!:Student;
-  loading:boolean = true;
+  public courseArray: Course[] = [];
   constructor(private router: Router,private studentService: StudentService) { }
 
   ngOnInit(): void {
     this.studentService.get(this.studentId).subscribe((stu) => {
       this.student = stu;
-      this.loading = false;
-      console.log(this.loading);
     });
+
+    this.studentService.getStudentCourses(this.studentId).subscribe((courseList) => {
+      this.courseArray = courseList._embedded.courses;
+    })
   }
 
   openLinkForm() {
@@ -39,5 +42,6 @@ export class StudentCardComponent implements OnInit {
       this.router.navigate(["/students"]);
     });
   }
+  
 
 }

@@ -39,5 +39,9 @@ export class StudentService {
     return this.http.get<Student>(`${this.API_URL}/${id}`);
   }
 
+  getStudentCourses(id:number): Observable<any> {
+    return this.http.get(`${this.API_URL}/${id}/courses`)
+  }
+
 
 }
