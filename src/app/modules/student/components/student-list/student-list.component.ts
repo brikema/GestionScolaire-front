@@ -48,5 +48,9 @@ export class StudentListComponent implements OnInit {
     this.router.navigateByUrl('/students/1');
   };
 
+  openStudentNew() {
+    this.router.navigateByUrl('/students/new');
+  }
+
 
 }

@@ -1,5 +1,6 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Student } from 'src/app/modules/student/models/student';
 import { StudentService } from 'src/app/modules/student/services/student.service';
@@ -19,9 +20,15 @@ export class StudentFormPageComponent implements OnInit {
   submitted:boolean = false;
   error: string | undefined;
 
-  constructor(private router: Router,private route: ActivatedRoute,private studentService: StudentService,private fb: FormBuilder) { }
+  constructor(private _title: Title, private _meta: Meta, private router: Router,private route: ActivatedRoute,private studentService: StudentService,private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this._title.setTitle("Gestion Scolaire - Modifier un étudiant");
+    this._meta.addTags([
+      { name: 'description', content: 'Cette page permet de modifier un étudiant sur votre Plateforme Gestion Scolaire.' },
+      { name: 'keywords', content: 'angular, gestion, scolaire, ecole, ensup' }  
+    ]);  
+
     this.studentForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],

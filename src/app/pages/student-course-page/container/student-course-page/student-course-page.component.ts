@@ -1,4 +1,5 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { Course } from 'src/app/modules/course/models/course';
@@ -20,9 +21,20 @@ export class StudentCoursePageComponent implements OnInit {
   public courseArray: Course[] = [];
   public selectedCourse:number = 0;
   private readonly _isDestroy: Subject<void> = new Subject();
-  constructor(private router: Router,private route: ActivatedRoute,private _studentService: StudentService,private _courseService: CourseService) { }
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private _studentService: StudentService,
+    private _courseService: CourseService,
+    private _title: Title, private _meta: Meta) { }
 
   ngOnInit(): void {
+    this._title.setTitle("Gestion Scolaire - Associer un cours à un étudiant");
+    this._meta.addTags([
+      { name: 'description', content: 'Cette page permet de modifier un étudiant sur votre Plateforme Gestion Scolaire en lui associant un cours.' },
+      { name: 'keywords', content: 'angular, gestion, scolaire, ecole, ensup' }  
+    ]);   
+
     this.route.params.subscribe(params => {
       this.id = params['id'];
       if(this.id){
