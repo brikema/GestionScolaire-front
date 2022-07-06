@@ -30,7 +30,7 @@ export class CourseService {
   }
 
   getEmptyCourseCount(): Observable<any>{
-    return this.http.get(`${this.API_URL}/courseWithoutStudents`);
+    return this.http.get(`${this.API_URL}/count/courseWithoutStudents`);
   }
 
   associateCourseAndStudent(studentId:number,courseId:number): Observable<any>{
