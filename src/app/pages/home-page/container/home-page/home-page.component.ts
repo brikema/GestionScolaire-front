@@ -1,6 +1,7 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
-import { concatMap, of, delay, repeat } from 'rxjs';
 import { Router } from '@angular/router';
+import { User } from 'src/app/shared/models/user';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'div[app-home-page]',
@@ -10,10 +11,15 @@ import { Router } from '@angular/router';
 export class HomePageComponent implements OnInit {
 
   @HostBinding('class') class = 'frame frame--top frame--height frame--middle';
-
-  constructor(private router: Router) { }
+  user!: User;
+  authenticated:boolean = false;
+  constructor(private router: Router,private authService: AuthService) { }
 
   ngOnInit(): void {
+    if(this.authService.isAuthenticated()){
+      this.user = JSON.parse(localStorage.getItem("user")!);
+      this.authenticated = true;
+    }
   }
 
   openStudentList() {

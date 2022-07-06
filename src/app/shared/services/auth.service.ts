@@ -9,7 +9,7 @@ import { User } from '../models/user';
 })
 export class AuthService {
   private TOKEN:string = "";
-  private USER:User | undefined;
+  private USER!:User;
 
 
   constructor(private http: HttpClient, private server: ServerConfig) {
@@ -17,7 +17,6 @@ export class AuthService {
   }
 
   login(username:string | null | undefined, password:string | null | undefined) {
-
       return this.http.post<any>(`${this.server.API_URL}/user-service/auth/signin`, {username, password});
   }
   getToken() {
@@ -26,22 +25,30 @@ export class AuthService {
 
   setToken(token:string){
     this.TOKEN = token;
+    this.decodeToken();
   }
 
   getUser(){
-    this.decodeToken();
     return this.USER;
   }
 
   decodeToken(){
     try {
       let dt:any = jwt_decode(this.TOKEN);
-      console.log(dt);
       this.USER = new User(dt.id,dt.sub,dt.roles);
-
+      localStorage.setItem("user",JSON.stringify(this.USER));
     } catch (error) {
       console.log(error);
     }
+  }
+
+  isAuthenticated(){
+    if(localStorage.getItem("user")){
+      return true;
+    } else {
+      return false;
+    }
+  
   }
   
 }

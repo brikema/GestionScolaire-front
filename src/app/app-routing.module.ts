@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth.guard';
 import { CourseInfoPageComponent } from './pages/course-info-page/container/course-info-page/course-info-page.component';
 import { CourseInfoPageModule } from './pages/course-info-page/course-info-page.module';
 import { CourseListPageComponent } from './pages/course-list-page/container/course-list-page/course-list-page.component';
@@ -21,31 +22,52 @@ const routes: Routes = [
   },
   {
     path: 'students',
-    component: StudentListPageComponent
+    component: StudentListPageComponent,
+    canActivate : [
+      AuthGuard
+    ]
   },
   {
     path: 'students/new',
-    component: StudentFormPageComponent
+    component: StudentFormPageComponent,
+    canActivate : [
+      AuthGuard
+    ]
   },
   {
     path: 'students/:id',
-    component: StudentInfoPageComponent
+    component: StudentInfoPageComponent,
+    canActivate : [
+      AuthGuard
+    ]
   },
   {
     path: 'students/:id/modify',
-    component: StudentFormPageComponent
+    component: StudentFormPageComponent,
+    canActivate : [
+      AuthGuard
+    ]
   },
   {
     path: 'students/:id/link-course',
-    component: StudentCoursePageComponent
+    component: StudentCoursePageComponent,
+    canActivate : [
+      AuthGuard
+    ]
   },
   {
     path: 'courses',
-    component: CourseListPageComponent
+    component: CourseListPageComponent,
+    canActivate : [
+      AuthGuard
+    ]
   },
   {
     path: 'courses/:id',
-    component: CourseInfoPageComponent
+    component: CourseInfoPageComponent,
+    canActivate : [
+      AuthGuard
+    ]
   },
   {
     path: 'login',
