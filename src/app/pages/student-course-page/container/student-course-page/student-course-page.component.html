@@ -5,12 +5,12 @@
     <div class="form-java_container col-24">
         <label class="form-java__label">Cours</label>
         <select [(ngModel)]="selectedCourse" class="form-java__input form-java__input--s" name="" id="">
-            <option selected="selected" disabled>Choisir un cours...</option>
+            <option selected="selected" disabled="disabled">Choisir un cours...</option>
             <option *ngFor="let course of courseArray" value="{{course.id}}">{{course.theme}}</option>
         </select>
     </div>
 
     <div class="col-24">
-        <button class="button-square color--secondary button-square--reverse helper-margin-top" (click)="associateCourse()">Associer le cours</button>
+        <button [disabled]="selectedCourse == 0 " [ngClass]="selectedCourse == 0 ? 'color--theme color--opposite button--desactivate' : 'color--secondary' " class="button-square color--secondary button-square--reverse helper-margin-top" (click)="associateCourse()">Associer le cours</button>
     </div>
 </div>

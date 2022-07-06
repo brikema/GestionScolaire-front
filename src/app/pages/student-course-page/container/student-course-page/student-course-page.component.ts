@@ -18,7 +18,7 @@ export class StudentCoursePageComponent implements OnInit {
   public id!:number;
   public student!:Student;
   public courseArray: Course[] = [];
-  public selectedCourse!:number;
+  public selectedCourse:number = 0;
   private readonly _isDestroy: Subject<void> = new Subject();
   constructor(private router: Router,private route: ActivatedRoute,private _studentService: StudentService,private _courseService: CourseService) { }
 
@@ -30,7 +30,17 @@ export class StudentCoursePageComponent implements OnInit {
           this.student = stu;
         })
         this._courseService.getAll().subscribe(
-          (courseList: any) => this.courseArray = courseList._embedded.courses
+          {
+            next: (courseList: any) => {
+              let cArray = courseList._embedded.courses;
+              this._studentService.getStudentCourses(this.id).subscribe({
+                next:(courseListLinked) => {
+                    let cArrayBis = courseListLinked._embedded.courses;
+                    this.courseArray = cArray.filter((id1:Course) => !cArrayBis.some((id2:Course) => id2.id === id1.id));
+                }
+              })
+            }
+          }
         );
       }
       takeUntil(this._isDestroy);
