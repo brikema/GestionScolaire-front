@@ -14,6 +14,8 @@ export class LoginPageComponent implements OnInit {
 
   loginForm!: FormGroup;
   public TOKEN: string = "";
+  error: string | undefined;
+  submitted:boolean = false;
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
 
@@ -24,9 +26,17 @@ export class LoginPageComponent implements OnInit {
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
+    this.loginForm.get('username')!.valueChanges.subscribe(() => {
+      this.error = undefined;
+    });
   }
 
+  get f() { return this.loginForm.controls; }
+
+
+
   onSubmit() {
+    this.submitted = true;
     if (this.loginForm.valid) {
       this.authService.login(this.loginForm.value.username, this.loginForm.value.password,)
         .subscribe({
@@ -37,10 +47,20 @@ export class LoginPageComponent implements OnInit {
                 window.location.reload();
               });
           },
-          error: (error) => { console.log(error); }
+          error: (error) => { 
+            switch (error.status) {
+              case 403:
+                  this.error = "Identifiant ou mot de passe invalide.";
+                break;
+              default:
+                this.error = "Une erreur inconnue est survenue.";
+                break;
+            }
+          }
         });
       this.loginForm.reset();
     } else {
+      console.log(this.loginForm.get("password")?.errors);
       console.log("Erreur, formulaire incomplet ou invalide");
     }
   }

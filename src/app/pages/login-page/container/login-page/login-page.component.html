@@ -4,15 +4,15 @@
     
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="form-java_container col-24">
-            <label class="form-java__label">Email</label>
+            <label class="form-java__label">Nom d'utilisateur</label>
             <input formControlName="username" type="text" class="form-java__input form-java__input--s">
         </div>
-
         <div class="form-java_container col-24">
             <label class="form-java__label">Mot de passe</label>
             <input formControlName="password" type="password" class="form-java__input form-java__input--s">
         </div>
 
-        <button type="submit" class="button-square color--secondary button-square--reverse helper-margin-top">Accéder au site</button>
+        <p *ngIf="submitted && error">{{error}}</p>
+        <button [disabled]="!loginForm.valid" type="submit" class="button-square color--secondary button-square--reverse helper-margin-top">Accéder au site</button>
     </form>
 </div>
