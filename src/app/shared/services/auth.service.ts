@@ -14,8 +14,8 @@ export class AuthService {
 
   }
 
-  login(username: string | null | undefined, password: string | null | undefined) {
-    return this.http.post<any>(`${this.server.API_URL}/user-service/auth/signin`, { username, password });
+  login(username:string | null | undefined, password:string | null | undefined) {
+      return this.http.post<any>(`/user/auth/signin`, {username, password});
   }
 
   setToken(token: string) {
@@ -34,8 +34,8 @@ export class AuthService {
     }
   }
 
-  isAuthenticated() {
-    if (localStorage.getItem("user")) {
+  isAuthenticated(){
+    if(localStorage.getItem("user")){
       return true;
     } else {
       return false;

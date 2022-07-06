@@ -13,8 +13,8 @@ import {TokenInterceptorService} from "../../../token-interceptor.service";
 })
 export class StudentService {
 
-  // API_URL: string = `/school/students`
-  API_URL: string = `${this.serverConfig.API_URL}/school-service/students`
+  API_URL: string = `/school/students`
+  // API_URL: string = `${this.serverConfig.API_URL}/school-service/students`
   private studentArray: Student[] = [];
 
   constructor(private serverConfig: ServerConfig, private http:HttpClient,private tokenInterceptorService:TokenInterceptorService) { }

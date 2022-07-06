@@ -9,7 +9,7 @@ import { Course } from '../models/course';
 })
 export class CourseService {
 
-  API_URL: string = `${this.serverConfig.API_URL}/school-service/courses`;
+  API_URL: string = `/school/courses`;
 
   constructor(private serverConfig: ServerConfig, private http:HttpClient) { }
 
