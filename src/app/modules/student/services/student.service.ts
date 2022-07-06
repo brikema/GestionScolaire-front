@@ -35,8 +35,8 @@ export class StudentService {
     return this.http.delete(`${this.API_URL}/${id}`);
   }
 
-  get(id: number) : Observable<any> {
-    return this.http.get(`${this.API_URL}/${id}`);
+  get(id: number) : Observable<Student> {
+    return this.http.get<Student>(`${this.API_URL}/${id}`);
   }
 
 

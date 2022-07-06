@@ -3,20 +3,19 @@
         <img class="" alt="une photo de jean pierre" src="https://cdn.pixabay.com/photo/2015/04/30/06/47/boy-746520_960_720.jpg">
     </div>
     <div class="col-8 col-md-24 helper-padding-top--xl helper-padding">
-        <h1>Jean Pierre</h1>
-        <p class="helper-padding-top-s">8 ans</p>
-        <p class="helper-padding-top-s">11/04/1195</p>
-        <p class="helper-padding-top-s">jeapn.pierre@gmail.com</p>
-        <p class="helper-padding-top-s">06.55.88.62.78</p>
-        <p class="helper-padding-top-s">3 rue des fleurs 78555 Lala</p>
+        <h1>{{student.firstName}} {{student.lastName}}</h1> 
+        <p class="helper-padding-top-s">{{student.birthDate | date:'dd/MM/yyyy' }}</p>
+        <p class="helper-padding-top-s">{{student.mail}}</p>
+        <p class="helper-padding-top-s">{{student.phoneNumber}}</p>
+        <p class="helper-padding-top-s">{{student.address}}</p>
     </div>
     <div class="col-8 col-md-24 helper-padding-top--xl helper-padding">
         <h2 class="text-lighter">Cours</h2>
         <div class="list-click col-24 helper-padding-top-s">
-            <a tabindex="0" (click)="openCourseCard();" class="list-click__item">
+            <a tabindex="0" (click)="openCourseCard(1);" class="list-click__item">
                 <span class="list-click__item__text">Mathématique</span>
             </a>     
-            <a tabindex="0" (click)="openCourseCard();" class="list-click__item">
+            <a tabindex="0" (click)="openCourseCard(1);" class="list-click__item">
                 <span class="list-click__item__text">Java</span>
             </a>               
         </div>
@@ -25,7 +24,7 @@
     <div class="col-8 col-md-24 helper-padding-top--s">
         <div class="helper-line helper-center">
             <button class="button-square color--secondary button-square--reverse" (click)="openModifyForm();">Modifier l'élève</button>
-            <button class="button-square color--secondary ">Supprimer l'élève</button>
+            <button class="button-square color--secondary " (click)="deleteStudent()">Supprimer l'élève</button>
         </div>
     </div>
 
