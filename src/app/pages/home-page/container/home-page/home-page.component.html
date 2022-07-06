@@ -1,29 +1,33 @@
 <div class="row">
-    <div *ngIf="authenticated && user.roles == 'ROLE_DIRECTOR'" class="col-24 helper-padding"> 
+    <div *ngIf="authenticated" class="col-24 helper-padding"> 
         <div class="badge-simple badge--floating">
             <span class="color-text color--theme">Bienvenue, {{user.name}}</span>
         </div>
     </div>
 
     <div class="col-12 col-md-24 image-container">
-        <img alt="image d'un batiment" src="/assets/images/hero.png">
+        <img alt="hero du site" src="/assets/images/hero.png">
     </div>
 
     <div class="col-12 col-md-24 helper-padding helper-center2">
         <div>
             <h1>Bienvenue sur Gestion Scolaire</h1>
 
-            <p *ngIf="authenticated && user.roles == 'ROLE_DIRECTOR' && studentCount > 1" class="helper-padding-top"><strong>{{studentCount}} étudiants</strong> sont inscrits dans cet établissement : <a  tabindex="0" (click)="openStudentList();" class="link-normal color--secondary">voir la liste des étudiants</a>.</p>
-            <p *ngIf="authenticated && user.roles == 'ROLE_DIRECTOR' && studentCount == 1" class="helper-padding-top"><strong>{{studentCount}} étudiants</strong> sont inscrits dans cet établissement : <a  tabindex="0" (click)="openStudentList();" class="link-normal color--secondary">voir la liste des étudiants</a>.</p>
+            <div class="helper-padding-top">
+                <p *ngIf="authenticated && user.roles == 'ROLE_DIRECTOR' && studentCount > 1" class=""><strong>{{studentCount}} étudiants</strong> sont inscrits dans cet établissement : <a  tabindex="0" (click)="openStudentList();" class="link-normal color--secondary">voir la liste des étudiants</a>.</p>
+                <p *ngIf="authenticated && user.roles == 'ROLE_DIRECTOR' && studentCount == 1" class=""><strong>{{studentCount}} étudiants</strong> sont inscrits dans cet établissement : <a  tabindex="0" (click)="openStudentList();" class="link-normal color--secondary">voir la liste des étudiants</a>.</p>
+    
+                <p *ngIf="authenticated && courseCount > 1" class=""><strong>{{courseCount}} cours</strong> sont enseignés dans cet établissement : <a tabindex="0" (click)="openCourseList();" class="link-normal color--secondary">voir les cours</a>.</p>
+                <p *ngIf="authenticated && courseCount == 1" class=""><strong>{{courseCount}} cours</strong> est enseigné dans cet établissement : <a tabindex="0" (click)="openCourseList();" class="link-normal color--secondary">voir le cours</a>.</p>
+            </div>
 
-            <p *ngIf="authenticated && courseCount > 1" class=""><strong>{{courseCount}} cours</strong> sont enseignés dans cet établissement : <a tabindex="0" (click)="openCourseList();" class="link-normal color--secondary">voir les cours</a>.</p>
-            <p *ngIf="authenticated && courseCount == 1" class=""><strong>{{courseCount}} cours</strong> est enseigné dans cet établissement : <a tabindex="0" (click)="openCourseList();" class="link-normal color--secondary">voir le cours</a>.</p>
-
-            <p *ngIf="authenticated && user.roles == 'ROLE_DIRECTOR' && emptyStudentCount == 1" class="helper-padding-top"><strong>{{emptyStudentCount}} élève</strong> n'est inscrit à aucun cours.</p>
-            <p *ngIf="authenticated && user.roles == 'ROLE_DIRECTOR' && emptyStudentCount > 1" class="helper-padding-top"><strong>{{emptyStudentCount}} élèves</strong> ne sont inscrits à aucun cours.</p>
-
-            <p *ngIf="authenticated && emptyCourseCount == 1" class="helper-padding-top"><strong>{{emptyCourseCount}} cours</strong> n'a aucun élèves inscrits.</p>
-            <p *ngIf="authenticated && emptyCourseCount > 1" class="helper-padding-top"><strong>{{emptyCourseCount}} cours</strong> n'ont aucun élèves inscrits.</p>
+            <div class="helper-padding-top">
+                <p *ngIf="authenticated && user.roles == 'ROLE_DIRECTOR' && emptyStudentCount == 1" class=""><strong>{{emptyStudentCount}} étudiant</strong> n'est inscrit à aucun cours.</p>
+                <p *ngIf="authenticated && user.roles == 'ROLE_DIRECTOR' && emptyStudentCount > 1" class=""><strong>{{emptyStudentCount}} étudiants</strong> ne sont inscrits à aucun cours.</p>
+    
+                <p *ngIf="authenticated && emptyCourseCount == 1" class=""><strong>{{emptyCourseCount}} cours</strong> n'a aucun étudiant inscrits.</p>
+                <p *ngIf="authenticated && emptyCourseCount > 1" class=""><strong>{{emptyCourseCount}} cours</strong> n'ont aucun étudiants inscrits.</p>
+            </div>
 
             <p *ngIf="authenticated" class="helper-padding-top">Voulez-vous <a tabindex="0" (click)="openStudentNew();" class="link-normal color--secondary">créer un nouvel étudiant</a>?</p>
         </div>

@@ -1,4 +1,5 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { CourseService } from 'src/app/modules/course/services/course.service';
@@ -29,10 +30,17 @@ export class HomePageComponent implements OnInit {
     private router: Router,
     private _authService: AuthService,
     private _courseService: CourseService,
-    private _studentService: StudentService
+    private _studentService: StudentService,
+    private _title: Title, private _meta: Meta
   ) { }
 
   ngOnInit(): void {
+    this._title.setTitle("Gestion Scolaire - Accueil");
+    this._meta.addTags([
+      { name: 'description', content: 'Cette page est en fait la page d\'accueil de votre plateforme Gestion Scolaire.' },
+      { name: 'keywords', content: 'angular, gestion, scolaire, ecole, ensup' }  
+    ]);  
+  
     if (this._authService.isAuthenticated()) {
       this.user = JSON.parse(localStorage.getItem("user")!);
       this.authenticated = true;

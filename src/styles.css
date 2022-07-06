@@ -1423,13 +1423,21 @@ textarea.form-java__input{
 .image-container{
     max-height: 100%;
     overflow: hidden;
+    display: flex;
+}
+
+.image-container--face{
+    height: 40rem!important;
 }
 
 .image-container img{
     width: 100%;
-    object-fit: cover;
+    height: 100%;
     user-select: none;
+    object-fit: cover;
     object-position: 50% 50%;
+    image-rendering: high-quality;
+    margin: auto auto;
 }
 
 /* #enregion image container */

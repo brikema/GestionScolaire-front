@@ -1,6 +1,6 @@
 <div *ngIf="student" class="row helper-padding-l color-bg--theme">
-    <div class="col-8 col-md-24 helper-padding-top--xl image-container helper-padding">
-        <img class="" alt="une photo de jean pierre" src="https://cdn.pixabay.com/photo/2015/04/30/06/47/boy-746520_960_720.jpg">
+    <div class="col-8 col-md-24 helper-padding-top--xl image-container image-container--face helper-padding">
+        <img class="" alt="une photo de {{student.firstName}} {{student.lastName}}" src="/assets/images/avatars/avatar{{student.id}}.jpg">
     </div>
     <div class="col-8 col-md-24 helper-padding-top--xl helper-padding">
         <h1>{{student.firstName}} {{student.lastName}}</h1> 
@@ -20,8 +20,8 @@
     </div>
     <div class="col-8 col-md-24 helper-padding-top--s">
         <div class="helper-line helper-center">
-            <button class="button-square color--secondary button-square--reverse" (click)="openModifyForm();">Modifier l'élève</button>
-            <button class="button-square color--secondary " (click)="deleteStudent()">Supprimer l'élève</button>
+            <button class="button-square color--secondary button-square--reverse" (click)="openModifyForm();">Modifier l'étudiant</button>
+            <button class="button-square color--secondary " (click)="deleteStudent()">Supprimer l'étudiant</button>
         </div>
     </div>
 
