@@ -1,5 +1,8 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subject, takeUntil } from 'rxjs';
+import { CourseService } from 'src/app/modules/course/services/course.service';
+import { StudentService } from 'src/app/modules/student/services/student.service';
 import { User } from 'src/app/shared/models/user';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
@@ -11,15 +14,55 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 export class HomePageComponent implements OnInit {
 
   @HostBinding('class') class = 'frame frame--top frame--height frame--middle';
-  user!: User;
-  authenticated:boolean = false;
-  constructor(private router: Router,private authService: AuthService) { }
+
+  public user!: User;
+  public authenticated:boolean = false;
+
+  public courseCount: number = 0;
+  public emptyCourseCount: number = 0;
+  public studentCount: number = 0;
+  public emptyStudentCount: number = 0;
+
+  private readonly _isDestroy: Subject<void> = new Subject();
+
+  constructor(
+    private router: Router,
+    private _authService: AuthService,
+    private _courseService: CourseService,
+    private _studentService: StudentService
+    ) { }
 
   ngOnInit(): void {
-    if(this.authService.isAuthenticated()){
+    if(this._authService.isAuthenticated()){
       this.user = JSON.parse(localStorage.getItem("user")!);
       this.authenticated = true;
+      takeUntil(this._isDestroy);
     }
+
+    this._courseService.getCourseCount().subscribe(
+      (value: number) => this.courseCount = value,
+      takeUntil(this._isDestroy)
+    )
+
+    this._courseService.getEmptyCourseCount().subscribe(
+      (value: number) => this.emptyCourseCount = value,
+      takeUntil(this._isDestroy)
+    )
+
+    this._studentService.getStudentCount().subscribe(
+      (value: number) => this.studentCount = value,
+      takeUntil(this._isDestroy)
+    )
+
+    this._studentService.getEmptyStudentCount().subscribe(
+      (value: number) => this.emptyStudentCount = value,
+      takeUntil(this._isDestroy)
+    )
+  }
+
+  ngOnDestroy(): void {
+    this._isDestroy.next();
+    this._isDestroy.complete();
   }
 
   openStudentList() {

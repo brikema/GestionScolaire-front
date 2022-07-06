@@ -1,4 +1,5 @@
 <div class="row">
+    <span class="col-24 helper-padding">Bienvenue, {{user.name}}</span>
     <div class="col-12 col-md-24 image-container">
         <img alt="image d'un batiment" src="/assets/images/hero.png">
     </div>
@@ -6,9 +7,20 @@
     <div class="col-12 col-md-24 helper-padding helper-center2">
         <div>
             <h1>Bienvenue sur Gestion Scolaire</h1>
-            <p class="helper-padding-top">Au total, <strong>14 étudiants</strong> sont inscrits dans cet établissement {{authenticated ? ":" : "."}} <a *ngIf="authenticated && user.roles == 'ROLE_DIRECTOR'" tabindex="0" (click)="openStudentList();" class="link-normal color--secondary">voir la liste des étudiants</a><ng-container *ngIf="authenticated">.</ng-container></p>
-            <p class="helper-padding-top"><strong>6 cours</strong> sont enseignés dans cet établissement {{authenticated ? ":" : "."}} <a *ngIf="authenticated" tabindex="0" (click)="openCourseList();" class="link-normal color--secondary">voir les cours</a><ng-container *ngIf="authenticated">.</ng-container></p>
-            <p *ngIf="authenticated" class="helper-padding-top">Voulez-vous <a tabindex="0" (click)="openStudentNew();" class="link-normal color--secondary">créer un nouvel étudiant</a>?</p>    
+
+            <p *ngIf="authenticated && user.roles == 'ROLE_DIRECTOR' && studentCount > 1" class="helper-padding-top"><strong>{{studentCount}} étudiants</strong> sont inscrits dans cet établissement : <a  tabindex="0" (click)="openStudentList();" class="link-normal color--secondary">voir la liste des étudiants</a>.</p>
+            <p *ngIf="authenticated && user.roles == 'ROLE_DIRECTOR' && studentCount == 1" class="helper-padding-top"><strong>{{studentCount}} étudiants</strong> sont inscrits dans cet établissement : <a  tabindex="0" (click)="openStudentList();" class="link-normal color--secondary">voir la liste des étudiants</a>.</p>
+
+            <p *ngIf="authenticated && courseCount > 1" class=""><strong>{{courseCount}} cours</strong> sont enseignés dans cet établissement : <a tabindex="0" (keydown.enter)="openCourseList();" class="link-normal color--secondary">voir les cours</a>.</p>
+            <p *ngIf="authenticated && courseCount == 1" class=""><strong>{{courseCount}} cours</strong> est enseigné dans cet établissement : <a tabindex="0" (click)="openCourseList();" class="link-normal color--secondary">voir le cours</a>.</p>
+
+            <p *ngIf="authenticated && emptyStudentCount == 1" class="helper-padding-top"><strong>{{emptyStudentCount}} élève</strong> n'est inscrit à aucun cours.</p>
+            <p *ngIf="authenticated && emptyStudentCount > 1" class="helper-padding-top"><strong>{{emptyStudentCount}} élèves</strong> ne sont inscrits à aucun cours.</p>
+
+            <p *ngIf="authenticated && emptyCourseCount == 1" class="helper-padding-top"><strong>{{emptyCourseCount}} cours</strong> n'a aucun élèves inscrits.</p>
+            <p *ngIf="authenticated && emptyCourseCount > 1" class="helper-padding-top"><strong>{{emptyCourseCount}} cours</strong> n'ont aucun élèves inscrits.</p>
+
+            <p *ngIf="authenticated" class="helper-padding-top">Voulez-vous <a tabindex="0" (click)="openStudentNew();" class="link-normal color--secondary">créer un nouvel étudiant</a>?</p>
         </div>
     </div>
 </div>

@@ -25,4 +25,12 @@ export class CourseService {
     return this.http.get(`${this.API_URL}/${id}/students`);
   }
 
+  getCourseCount(): Observable<any>{
+    return this.http.get(`${this.API_URL}/count/all`);
+  }
+
+  getEmptyCourseCount(): Observable<any>{
+    return this.http.get(`${this.API_URL}/courseWithoutStudents`);
+  }
+
 }
