@@ -44,7 +44,7 @@ export class StudentService {
   }
 
   getEmptyStudentCount(): Observable<any>{
-    return this.http.get(`${this.API_URL}/studentWithoutCourse`);
+    return this.http.get(`${this.API_URL}/count/studentWithoutCourse`);
   }
 
   getStudentCourses(id:number): Observable<any> {
