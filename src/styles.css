@@ -1255,6 +1255,17 @@ textarea.form-java__input{
     width:100%;
 }
 
+.button--desactivate{
+    user-select: none!important;
+    cursor: not-allowed!important;
+    pointer-events: none!important;
+    opacity: 0.4;
+}
+
+.button--desactivate:hover{
+
+}
+
 /* #region - Button square */
 
 .button-square {
