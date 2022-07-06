@@ -1519,3 +1519,26 @@ textarea.form-java__input{
 .error--invisible{
     display: none;
 }
+
+/* #region Badge simple */
+
+.badge-simple{
+    background-color: var(--color-primary);
+    padding: 0.5rem;
+    box-sizing: border-box;
+    border-radius: 50px;
+    width: auto;
+    display: inline-block;
+}
+
+.badge-simple span{
+    white-space: nowrap;
+    font-size:12px;
+    margin: auto auto
+}
+
+.badge--floating{
+    position: absolute; top: 7rem
+}
+
+/* #endregion Badge simple */
