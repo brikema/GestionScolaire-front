@@ -7,6 +7,12 @@
 
     <p *ngIf="id" class="helper-padding-top--s helper-padding-bot col-24"><a class="link-normal color--secondary"
             (click)="openStudentInfo();"><i class="fa-solid fa-arrow-left"></i> Retourner à Jean Pierre</a></p>
+
+    <div [className]="submitted && error ? 'error col-24' : 'error--invisible col-24'" *ngIf="submitted && error"
+        class="col-24">
+        <span>{{error}}</span>
+    </div>
+
     <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
         <div class="form-java_container col-8 col-md-12">
             <label class="form-java__label">Prénom</label>
@@ -39,7 +45,9 @@
         </div>
 
         <div class="col-24">
-            <button type="submit" class="button-square color--secondary button-square--reverse helper-margin-top">{{id ? "Modifier "+student.firstName+" "+student.lastName : "Créer l'étudiant"}}</button>
+            <button [disabled]="!studentForm.valid" [ngClass]="!studentForm.valid ? 'color--theme color--opposite button--desactivate' : 'color--secondary' " type="submit"
+                class="button-square button-square--reverse helper-margin-top">{{id ? "Modifier
+                "+student.firstName+" "+student.lastName : "Créer l'étudiant"}}</button>
         </div>
     </form>
 </div>

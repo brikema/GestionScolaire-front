@@ -28,16 +28,13 @@ export class CourseCardComponent implements OnInit {
       }
     )
     takeUntil(this._isDestroy);
-    console.log(this.courseId);
 
     this._courseService.getStudentsByCourse(this.courseId).subscribe(
       (result: any) => {
-        this.numberOfStudents = result._embedded.students.length,
-        console.log(result)
+        this.numberOfStudents = result._embedded.students.length
       }
     )
     takeUntil(this._isDestroy);
-    console.log(this.courseId);
   }
 
   ngOnDestroy(): void {

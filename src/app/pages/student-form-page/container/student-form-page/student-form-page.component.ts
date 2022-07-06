@@ -17,6 +17,7 @@ export class StudentFormPageComponent implements OnInit {
   student!:Student;
   studentForm!: FormGroup;
   submitted:boolean = false;
+  error: string | undefined;
 
   constructor(private router: Router,private route: ActivatedRoute,private studentService: StudentService,private fb: FormBuilder) { }
 
@@ -58,17 +59,28 @@ export class StudentFormPageComponent implements OnInit {
       if(this.id){
         student.id = this.id;
       }
-      this.studentService.create(student).subscribe((stu)=> {
-        if(this.id){
-          this.router.navigate([`/students/${this.id}`]);
-        } else {
-          this.router.navigate(["/students"]);
+      this.studentService.create(student).subscribe( {
+        next: (stu) => {
+          if(this.id){
+            this.router.navigate([`/students/${this.id}`]);
+          } else {
+            this.router.navigate(["/students"]);
+          } 
+        },
+        error: (error) => {
+          switch (error.status) {
+            case 401:
+            case 400:
+                this.error = "Vous ne pouvez pas faire cette requête";
+              break;
+            default:
+              this.error = "Une erreur inconnue est survenue.";
+              break;
+          }
         }
         
       });
-    } else {
-
-    }
+    } 
     
     
   }

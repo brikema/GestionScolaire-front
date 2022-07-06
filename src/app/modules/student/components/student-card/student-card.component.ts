@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
+import {  Router } from '@angular/router';
 import { Student } from '../../models/student';
 import { StudentService } from '../../services/student.service';
 
@@ -9,25 +9,25 @@ import { StudentService } from '../../services/student.service';
   styleUrls: ['./student-card.component.css']
 })
 export class StudentCardComponent implements OnInit {
-  id!:number;
+  @Input() studentId: number = 0;
   student!:Student;
-  constructor(private router: Router,private route: ActivatedRoute,private studentService: StudentService) { }
+  loading:boolean = true;
+  constructor(private router: Router,private studentService: StudentService) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.id = params['id'];
-      this.studentService.get(this.id).subscribe((stu) => {
-        this.student = stu;
-      })
+    this.studentService.get(this.studentId).subscribe((stu) => {
+      this.student = stu;
+      this.loading = false;
+      console.log(this.loading);
     });
   }
 
   openLinkForm() {
-    this.router.navigateByUrl(`/students/${this.id}/link-course`);
+    this.router.navigateByUrl(`/students/${this.studentId}/link-course`);
   }
 
   openModifyForm() {
-    this.router.navigateByUrl(`/students/${this.id}/modify`);
+    this.router.navigateByUrl(`/students/${this.studentId}/modify`);
   }
 
   openCourseCard(id:number) {
@@ -35,7 +35,7 @@ export class StudentCardComponent implements OnInit {
   }
 
   deleteStudent(){
-    this.studentService.delete(this.id).subscribe(()=> {
+    this.studentService.delete(this.studentId).subscribe(()=> {
       this.router.navigate(["/students"]);
     });
   }

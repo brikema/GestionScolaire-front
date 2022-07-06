@@ -1,4 +1,5 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'div[app-student-info-page]',
@@ -9,9 +10,14 @@ export class StudentInfoPageComponent implements OnInit {
 
   @HostBinding('class') class = 'frame frame--height frame--top frame--padd';
 
-  constructor() { }
+  public studentId: number = 0;
+
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.studentId = params['id'];
+    });
   }
 
 }
