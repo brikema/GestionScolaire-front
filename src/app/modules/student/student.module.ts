@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StudentListComponent } from './components/student-list/student-list.component';
 import { StudentCardComponent } from './components/student-card/student-card.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -12,7 +13,8 @@ import { StudentCardComponent } from './components/student-card/student-card.com
     StudentCardComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   exports: [
     StudentListComponent,

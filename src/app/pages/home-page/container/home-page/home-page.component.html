@@ -19,8 +19,8 @@
             <p *ngIf="authenticated && courseCount > 1" class=""><strong>{{courseCount}} cours</strong> sont enseignés dans cet établissement : <a tabindex="0" (click)="openCourseList();" class="link-normal color--secondary">voir les cours</a>.</p>
             <p *ngIf="authenticated && courseCount == 1" class=""><strong>{{courseCount}} cours</strong> est enseigné dans cet établissement : <a tabindex="0" (click)="openCourseList();" class="link-normal color--secondary">voir le cours</a>.</p>
 
-            <p *ngIf="authenticated && emptyStudentCount == 1" class="helper-padding-top"><strong>{{emptyStudentCount}} élève</strong> n'est inscrit à aucun cours.</p>
-            <p *ngIf="authenticated && emptyStudentCount > 1" class="helper-padding-top"><strong>{{emptyStudentCount}} élèves</strong> ne sont inscrits à aucun cours.</p>
+            <p *ngIf="authenticated && user.roles == 'ROLE_DIRECTOR' && emptyStudentCount == 1" class="helper-padding-top"><strong>{{emptyStudentCount}} élève</strong> n'est inscrit à aucun cours.</p>
+            <p *ngIf="authenticated && user.roles == 'ROLE_DIRECTOR' && emptyStudentCount > 1" class="helper-padding-top"><strong>{{emptyStudentCount}} élèves</strong> ne sont inscrits à aucun cours.</p>
 
             <p *ngIf="authenticated && emptyCourseCount == 1" class="helper-padding-top"><strong>{{emptyCourseCount}} cours</strong> n'a aucun élèves inscrits.</p>
             <p *ngIf="authenticated && emptyCourseCount > 1" class="helper-padding-top"><strong>{{emptyCourseCount}} cours</strong> n'ont aucun élèves inscrits.</p>

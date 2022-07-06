@@ -2,9 +2,8 @@
 <div class="form-java_container helper-padding-top">
     <div class="form-java_container--search">
         <i class="fas fa-search"></i>
-        <input type="search" class="form-java__input">
-        <button class="button-square button-square--rounded">Rechercher</button>
-        <!-- <button class="button-square color--secondary button-square--rounded button-square--inverse">Rechercher</button> -->
+        <input [(ngModel)]="searchVal" (keyup.enter)="filter()" type="search" class="form-java__input">
+        <button class="button-square button-square--rounded" (click)="filter()">Rechercher</button>
     </div>
 </div>
 <div class="table-spring-container col-24 helper-padding-top-s">
@@ -17,7 +16,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let student of studentArray;">
+            <tr *ngFor="let student of studentArrayDisplay;">
                 <td><a tabindex="0" href="/students/{{student.id}}" class="link-normal color--secondary">{{student.firstName}} {{student.lastName}}</a></td>
                 <td>{{student.birthDate | date:'dd/MM/yyyy' }}</td>
                 <td>{{student.mail}}</td>   

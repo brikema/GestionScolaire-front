@@ -2,8 +2,8 @@
 <div class="form-java_container helper-padding-top">
     <div class="form-java_container--search">
         <i class="fas fa-search"></i>
-        <input type="search" class="form-java__input">
-        <button class="button-square button-square--rounded">Rechercher</button>
+        <input [(ngModel)]="searchVal" (keyup.enter)="filter()" type="search" class="form-java__input">
+        <button class="button-square button-square--rounded" (click)="filter()">Rechercher</button>
         <!-- <button class="button-square color--secondary button-square--rounded button-square--inverse">Rechercher</button> -->
     </div>
 </div>
@@ -17,7 +17,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let course of courseArray;">
+            <tr *ngFor="let course of courseArrayDisplay;">
                 <td><a tabindex="0" class="link-normal color--secondary color--secondary color--secondary color--secondary" (click)="openCourseCard(course.id);">{{course.theme}}</a></td>
                 <td>{{course.hours}} heures</td>
             </tr>

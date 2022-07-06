@@ -16,7 +16,7 @@ export class HomePageComponent implements OnInit {
   @HostBinding('class') class = 'frame frame--top frame--height frame--middle';
 
   public user!: User;
-  public authenticated:boolean = false;
+  public authenticated: boolean = false;
 
   public courseCount: number = 0;
   public emptyCourseCount: number = 0;
@@ -30,34 +30,51 @@ export class HomePageComponent implements OnInit {
     private _authService: AuthService,
     private _courseService: CourseService,
     private _studentService: StudentService
-    ) { }
+  ) { }
 
   ngOnInit(): void {
-    if(this._authService.isAuthenticated()){
+    if (this._authService.isAuthenticated()) {
       this.user = JSON.parse(localStorage.getItem("user")!);
       this.authenticated = true;
       takeUntil(this._isDestroy);
+      this._courseService.getCourseCount().subscribe(
+        {
+          next: (value: number) => {
+            this.courseCount = value;
+            takeUntil(this._isDestroy);
+          }
+        }
+      )
+      this._courseService.getEmptyCourseCount().subscribe(
+        {
+          next: (value: number) => {
+            this.emptyCourseCount = value;
+            takeUntil(this._isDestroy);
+          }
+        }
+      )
+      this._studentService.getStudentCount().subscribe(
+        {
+          next: (value: number) => {
+            this.studentCount = value;
+            takeUntil(this._isDestroy);
+          }
+        }
+      )
+
+      this._studentService.getEmptyStudentCount().subscribe(
+        {
+          next: (value: number) => {
+            this.emptyStudentCount = value;
+            takeUntil(this._isDestroy);
+          }
+        }
+      )
+
+
     }
 
-    this._courseService.getCourseCount().subscribe(
-      (value: number) => this.courseCount = value,
-      takeUntil(this._isDestroy)
-    )
 
-    this._courseService.getEmptyCourseCount().subscribe(
-      (value: number) => this.emptyCourseCount = value,
-      takeUntil(this._isDestroy)
-    )
-
-    this._studentService.getStudentCount().subscribe(
-      (value: number) => this.studentCount = value,
-      takeUntil(this._isDestroy)
-    )
-
-    this._studentService.getEmptyStudentCount().subscribe(
-      (value: number) => this.emptyStudentCount = value,
-      takeUntil(this._isDestroy)
-    )
   }
 
   ngOnDestroy(): void {
@@ -73,7 +90,7 @@ export class HomePageComponent implements OnInit {
     this.router.navigateByUrl('/courses');
   };
 
-  openStudentNew(){
+  openStudentNew() {
     this.router.navigateByUrl('/students/new');
   }
 
