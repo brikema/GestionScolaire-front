@@ -4,6 +4,7 @@ import { AuthGuard } from './auth.guard';
 import { CourseInfoPageComponent } from './pages/course-info-page/container/course-info-page/course-info-page.component';
 import { CourseInfoPageModule } from './pages/course-info-page/course-info-page.module';
 import { CourseListPageComponent } from './pages/course-list-page/container/course-list-page/course-list-page.component';
+import { FourOFourPageComponent } from './pages/four-o-four-page/container/four-o-four-page/four-o-four-page.component';
 import { HomePageComponent } from './pages/home-page/container/home-page/home-page.component';
 import { LoginPageComponent } from './pages/login-page/container/login-page/login-page.component';
 import { RegisterPageComponent } from './pages/register-page/container/register-page/register-page.component';
@@ -23,49 +24,49 @@ const routes: Routes = [
   {
     path: 'students',
     component: StudentListPageComponent,
-    canActivate : [
+    canActivate: [
       AuthGuard
     ]
   },
   {
     path: 'students/new',
     component: StudentFormPageComponent,
-    canActivate : [
+    canActivate: [
       AuthGuard
     ]
   },
   {
     path: 'students/:id',
     component: StudentInfoPageComponent,
-    canActivate : [
+    canActivate: [
       AuthGuard
     ]
   },
   {
     path: 'students/:id/modify',
     component: StudentFormPageComponent,
-    canActivate : [
+    canActivate: [
       AuthGuard
     ]
   },
   {
     path: 'students/:id/link-course',
     component: StudentCoursePageComponent,
-    canActivate : [
+    canActivate: [
       AuthGuard
     ]
   },
   {
     path: 'courses',
     component: CourseListPageComponent,
-    canActivate : [
+    canActivate: [
       AuthGuard
     ]
   },
   {
     path: 'courses/:id',
     component: CourseInfoPageComponent,
-    canActivate : [
+    canActivate: [
       AuthGuard
     ]
   },
@@ -76,6 +77,11 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterPageComponent
+  },
+  { path: '404', component: FourOFourPageComponent },
+  {
+    path: '**',
+    redirectTo: "/404"
   }
 ];
 

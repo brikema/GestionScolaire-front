@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { Course } from '../../models/course';
 import { CourseService } from '../../services/course.service';
@@ -17,7 +18,8 @@ export class CourseCardComponent implements OnInit {
   private readonly _isDestroy: Subject<void> = new Subject();
 
   constructor(
-    private readonly _courseService: CourseService
+    private readonly _courseService: CourseService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -25,8 +27,11 @@ export class CourseCardComponent implements OnInit {
       next: (course) => {
         this.course = course;
       },
+      error: (error) => {
+        this.router.navigate(["/404"]);
+      }
     }
-    
+
     )
     takeUntil(this._isDestroy);
 
