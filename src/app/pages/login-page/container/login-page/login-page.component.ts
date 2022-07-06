@@ -1,6 +1,6 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import { LoginService } from 'src/app/shared/services/login.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
 import {ServerConfig} from "../../../../../config/server.config";
 
 @Component({
@@ -15,7 +15,7 @@ export class LoginPageComponent implements OnInit {
   loginForm!: FormGroup;
   public TOKEN: string= "";
 
-  constructor(private fb:FormBuilder, private loginService: LoginService, private serverConfig: ServerConfig) {
+  constructor(private fb:FormBuilder, private authService: AuthService, private serverConfig: ServerConfig) {
 
   }
 
@@ -30,10 +30,11 @@ export class LoginPageComponent implements OnInit {
     console.log(this.loginForm.value);
 
     if(this.loginForm.valid){
-      this.loginService.login(this.loginForm.value.username, this.loginForm.value.password)
+      this.authService.login(this.loginForm.value.username, this.loginForm.value.password)
         .subscribe({
         next: (value) => {
-          this.serverConfig.TOKEN = value.token
+          this.authService.setToken(value.token);
+          console.log(this.authService.getUser());
         },
         error : (error) => {console.log(error);}
       });

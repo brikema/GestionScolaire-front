@@ -8,9 +8,7 @@ import {HttpHeaders} from "@angular/common/http";
   export class ServerConfig {
 
 
-    //public API_URL = "http://18.216.190.197:8099";
-    public API_URL = "http://13.59.222.4:8099";
-    public TOKEN = "";
+    public API_URL = "http://127.0.0.1:9999";
     public  httpOptions :any = {
       headers: new HttpHeaders({
         'Access-Control-Allow-Origin': '*',
