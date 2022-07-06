@@ -1,8 +1,8 @@
 import { Student } from "../../student/models/student";
 
 export class Course {
-    id: number | undefined;
-    theme:string | undefined;
-    hours:number | undefined;
+    id!: number;
+    theme!:string;
+    hours!:number;
     students: Student[] = [];
 }

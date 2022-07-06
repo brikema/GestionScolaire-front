@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {  Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { Course } from 'src/app/modules/course/models/course';
 import { Student } from '../../models/student';
 import { StudentService } from '../../services/student.service';
 
@@ -10,16 +11,23 @@ import { StudentService } from '../../services/student.service';
 })
 export class StudentCardComponent implements OnInit {
   @Input() studentId: number = 0;
-  student!:Student;
-  loading:boolean = true;
-  constructor(private router: Router,private studentService: StudentService) { }
+  student!: Student;
+  public courseArray: Course[] = [];
+  constructor(private router: Router, private studentService: StudentService) { }
 
   ngOnInit(): void {
-    this.studentService.get(this.studentId).subscribe((stu) => {
-      this.student = stu;
-      this.loading = false;
-      console.log(this.loading);
+    this.studentService.get(this.studentId).subscribe({
+      next: (stu) => {
+        this.student = stu;
+      },
+      error: (error) => {
+        this.router.navigate(["/404"]);
+      }
     });
+
+    this.studentService.getStudentCourses(this.studentId).subscribe((courseList) => {
+      this.courseArray = courseList._embedded.courses;
+    })
   }
 
   openLinkForm() {
@@ -30,14 +38,15 @@ export class StudentCardComponent implements OnInit {
     this.router.navigateByUrl(`/students/${this.studentId}/modify`);
   }
 
-  openCourseCard(id:number) {
+  openCourseCard(id: number) {
     this.router.navigateByUrl(`/courses/${id}`);
   }
 
-  deleteStudent(){
-    this.studentService.delete(this.studentId).subscribe(()=> {
+  deleteStudent() {
+    this.studentService.delete(this.studentId).subscribe(() => {
       this.router.navigate(["/students"]);
     });
   }
+
 
 }

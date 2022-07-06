@@ -13,6 +13,7 @@ import { LoginPageModule } from './pages/login-page/login-page.module';
 import {TokenInterceptorService} from "./token-interceptor.service";
 import { HomePageModule } from './pages/home-page/home-page.module';
 import { AuthGuard } from './auth.guard';
+import { FourOFourPageModule } from './pages/four-o-four-page/four-o-four-page.module';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { AuthGuard } from './auth.guard';
     ReactiveFormsModule,
     LoginPageModule,
     HttpClientModule,
+    FourOFourPageModule
 
   ],
   providers: [{
