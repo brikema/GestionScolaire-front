@@ -738,6 +738,7 @@ a:hover{
 
 .navbar-music{
     position:fixed;
+    outline: none;
     top:0;
     width:100%;
     background-color:var(--color-primary);
@@ -773,6 +774,7 @@ a:hover{
 
 .navbar-music .navbar-music__link:hover, .navbar-music .navbar-music__link:focus, .navbar-music .navbar-music__link:focus-visible {
     background-color:var(--color-primary-light1);
+    outline: none;
 }
 
 .navbar-music .navbar-music__link:active {
@@ -1014,6 +1016,10 @@ table.table-spring th{
 
 .table-spring tr:first-child{
     border-top: none;
+}
+
+.table-spring tbody tr:hover{
+    background-color: var(--color-theme-shade2)!important
 }
 
 @media only screen and (max-width: 1080px) {
