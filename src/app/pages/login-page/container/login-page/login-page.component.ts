@@ -13,7 +13,6 @@ export class LoginPageComponent implements OnInit {
   @HostBinding('class') class = 'frame frame--top frame--height frame--padd';
 
   loginForm!: FormGroup;
-  public TOKEN: string = "";
   error: string | undefined;
   submitted:boolean = false;
 
@@ -59,9 +58,6 @@ export class LoginPageComponent implements OnInit {
           }
         });
       this.loginForm.reset();
-    } else {
-      console.log(this.loginForm.get("password")?.errors);
-      console.log("Erreur, formulaire incomplet ou invalide");
-    }
+    } 
   }
 }
