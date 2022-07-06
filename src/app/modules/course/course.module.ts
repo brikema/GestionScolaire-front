@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CourseListComponent } from './components/course-list/course-list.component';
 import { CourseCardComponent } from './components/course-card/course-card.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -11,7 +12,8 @@ import { CourseCardComponent } from './components/course-card/course-card.compon
     CourseCardComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   exports: [
     CourseListComponent,

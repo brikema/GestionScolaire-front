@@ -12,6 +12,8 @@ import { CourseService } from '../../services/course.service';
 export class CourseListComponent implements OnInit {
 
   public courseArray: Course[] = [];
+  public courseArrayDisplay: Course[] = [];
+  public searchVal:string = "";
 
   private readonly _isDestroy: Subject<void> = new Subject();
 
@@ -22,9 +24,22 @@ export class CourseListComponent implements OnInit {
 
   ngOnInit(): void {
     this._courseService.getAll().subscribe(
-      (courseList: any) => this.courseArray = courseList._embedded.courses
+      {
+        next: (courseList:any) => {
+           this.courseArray = courseList._embedded.courses;
+           this.courseArrayDisplay = this.courseArray;
+        }
+      }
     )
     takeUntil(this._isDestroy);
+  }
+
+
+  filter() {
+    this.courseArrayDisplay = this.courseArray.filter((course) => {
+      return course.theme.toLowerCase().includes(this.searchVal);
+    });
+    this.searchVal = "";
   }
 
   ngOnDestroy(): void {
@@ -34,6 +49,6 @@ export class CourseListComponent implements OnInit {
 
   openCourseCard(id: number | undefined) {
     this.router.navigateByUrl(`/courses/${id}`);
-  };
+  }
 
 }
