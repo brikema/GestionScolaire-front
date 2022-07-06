@@ -650,7 +650,7 @@ h5{
 h6{
     font-size:1.8rem;
 }
-p, span, label, input, a, i, li, select, option, th, td, textarea, code{
+p, span, label, input, a, i, li, select, option, th, td, textarea, code, strong{
     font-family:var(--font-text-primary);
     color:var(--color-opposite);
     font-size: var(--font-text-primary-size); /*  This can go from 16px to 21px based on the font */
@@ -1496,14 +1496,19 @@ textarea.form-java__input{
 }
 
 .error{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.error span{
     --error-red: #ff0033;
     --error-red-lighter: #FFCCCC;
-    border: 0.5rem solid var(--error-red);
+    border: 0.2rem solid var(--error-red);
     background-color: var(--error-red-lighter); 
     box-sizing: border-box;
     padding: 0.5rem;
 }
 
-/* <div class="error">
-<span>toto</span>
-</div> */
+.error--invisible{
+    display: none;
+}

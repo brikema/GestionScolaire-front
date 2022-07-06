@@ -2,6 +2,11 @@
     <h1 class="helper-padding-top--xl col-24">Se connecter</h1>
     <p class="helper-padding-top--s helper-padding-bot col-24">Vous devez vous connecter au site afin d'accéder à ses magnifiques fonctionalités.</p>
     
+    
+    <div [className]="submitted && error ? 'error col-24' : 'error--invisible col-24'" *ngIf="submitted && error" class="col-24">
+        <span>{{error}}</span>
+    </div>
+
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="form-java_container col-24">
             <label class="form-java__label">Nom d'utilisateur</label>
@@ -12,7 +17,6 @@
             <input formControlName="password" type="password" class="form-java__input form-java__input--s">
         </div>
 
-        <p *ngIf="submitted && error">{{error}}</p>
         <button [disabled]="!loginForm.valid" type="submit" class="button-square color--secondary button-square--reverse helper-margin-top">Accéder au site</button>
     </form>
 </div>

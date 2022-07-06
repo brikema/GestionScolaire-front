@@ -6,8 +6,8 @@
     <div class="col-12 col-md-24 helper-padding helper-center2">
         <div>
             <h1>Bienvenue sur Gestion Scolaire</h1>
-            <p class="helper-padding-top">Au total, 14 étudiants sont inscrits dans cet établissement {{authenticated ? ":" : "."}} <a *ngIf="authenticated && user.roles == 'ROLE_DIRECTOR'" tabindex="0" (click)="openStudentList();" class="link-normal color--secondary">voir la liste des étudiants</a><ng-container *ngIf="authenticated">.</ng-container></p>
-            <p class="helper-padding-top">6 cours sont enseignés dans cet établissement {{authenticated ? ":" : "."}} <a *ngIf="authenticated" tabindex="0" (click)="openCourseList();" class="link-normal color--secondary">voir les cours</a><ng-container *ngIf="authenticated">.</ng-container></p>
+            <p class="helper-padding-top">Au total, <strong>14 étudiants</strong> sont inscrits dans cet établissement {{authenticated ? ":" : "."}} <a *ngIf="authenticated && user.roles == 'ROLE_DIRECTOR'" tabindex="0" (click)="openStudentList();" class="link-normal color--secondary">voir la liste des étudiants</a><ng-container *ngIf="authenticated">.</ng-container></p>
+            <p class="helper-padding-top"><strong>6 cours</strong> sont enseignés dans cet établissement {{authenticated ? ":" : "."}} <a *ngIf="authenticated" tabindex="0" (click)="openCourseList();" class="link-normal color--secondary">voir les cours</a><ng-container *ngIf="authenticated">.</ng-container></p>
             <p *ngIf="authenticated" class="helper-padding-top">Voulez-vous <a tabindex="0" (click)="openStudentNew();" class="link-normal color--secondary">créer un nouvel étudiant</a>?</p>    
         </div>
     </div>
